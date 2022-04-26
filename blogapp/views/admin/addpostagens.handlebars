@@ -1,0 +1,37 @@
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div> <!-- Essa variável texto é do arquivo admin.js -->
+{{else}}
+
+{{/each}}
+
+<div class="card">
+    <div class="card-body">
+        <h4>Nova Postagem: </h4>
+        <form action="/admin/postagens/nova" method="POST">
+        <label for="titulo">Título: </label>
+        <input type="text" id="titulo" name="titulo" placeholder="Nome do Título" class="form-control">
+        <br>
+        <label for="slug">Slug: </label>
+        <input type="text" id="slug" name="slug" placeholder="Slug da Categoria" class="form-control">
+        <br>
+        <label for="descricao">Descrição: </label>
+        <input type="text" id="descricao" name="descricao" placeholder="Descrição do Post" class="form-control">
+        <br>
+        <label for="conteudo">Conteúdo: </label>
+        <textarea name="conteudo" class="form-control"></textarea>
+        <br>
+         <label for="categoria">Categoria: </label> 
+         <select name="categoria" class="form-select">
+            {{#each categorias}}
+                <option value="{{_id}}">{{nome}}</option>
+            {{else}}
+                <option value="0">Nenhuma Categoria Registrada</option>
+            {{/each}}
+         </select>
+         <br>     
+        <button type="submit" class="btn btn-success">Criar Postagem</button>
+        </form>
+    </div>
+</div>
